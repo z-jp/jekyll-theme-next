@@ -1,1 +1,21 @@
 // Custom styles.
+pre .c, pre .cm, pre .cp, pre .c1, pre .cs {
+    color: inherit;
+}
+
+p{
+    margin: 0 0 15px 0;
+}
+
+pre, .highlight {
+    margin: 0;
+    border: 1px solid #e8e8e8;
+}
+
+.posts-expand .post-body {
+    text-align: unset;
+}
+
+ol, ul {
+    -webkit-padding-start: 15px;
+}

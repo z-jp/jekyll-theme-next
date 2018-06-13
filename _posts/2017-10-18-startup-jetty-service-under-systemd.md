@@ -40,7 +40,7 @@ Jetty Base 目录用于配置 Jetty 分发包，Jetty Home 目录存放各版本
    ```
    创建一个名为 Jetty 的用户，所属用户组和用户名相同，没有创建home目录也无法登录
 2. 编写 Systemd 单元  
-   创建 `/lib/systemd/system/jetty.service` 文件，写入以下配置
+   创建 ~~`/lib/systemd/system/jetty.service`~~ `/usr/lib/systemd/system/jetty.service`(用户自定义配置应该放在 /usr 下，2018.-06-13 更新) 文件，写入以下配置
    ```ini
    [Unit]
    Description=Jetty Web Application Container
@@ -68,7 +68,7 @@ Jetty Base 目录用于配置 Jetty 分发包，Jetty Home 目录存放各版本
 4. 刷新 Systemd 配置  
    执行 `systemctl daemon-reload`，此时应该可以启动 Jetty 了。但很不幸，单元启动失败，日志显示 `jetty.service: PID file /run/jetty/jetty.pid not readable (yet?) after start: No such file or directory` 看来是pid文件权限问题，将 pid 文件改在 Jetty Base 目录：
    1. 添加 `JETTY_PID=/var/www/jetty-base/jetty/jetty.pid` 到 `/etc/default/jetty`
-   2. 同时修改 `/lib/systemd/system/jetty.service` 中 `PIDFile` 路径
+   2. 同时修改 `/usr/lib/systemd/system/jetty.service` 中 `PIDFile` 路径
    3. `# chown -R jetty:jetty /var/www/jetty-base/` 确保 Jetty Base 所有者和权限正确
 5. 激活并启动 Jetty
    ```bash

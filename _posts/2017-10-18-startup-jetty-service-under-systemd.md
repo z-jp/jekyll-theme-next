@@ -18,7 +18,10 @@ Jetty Base 目录用于配置 Jetty 分发包，Jetty Home 目录存放各版本
    # mkdir -p /var/www/jetty-base/temp
    # mkdir -P /var/www/jetty-base/jetty
    ```
-   /opt/jetty : Jetty Home /var/www/jetty-base : Jetty Base /var/www/jetty-base/temp : 临时目录，存放 war 解压包 /var/www/jetty-base/jetty : .pid 文件目录，配置 Systemd 需要用到
+   /opt/jetty : Jetty Home   
+   /var/www/jetty-base : Jetty Base   
+   /var/www/jetty-base/temp : 临时目录，存放 war 解压包   
+   /var/www/jetty-base/jetty : .pid 文件目录，配置 Systemd 需要用到   
 2. 解压 Jetty
    ```bash
    # tar -zxf /home/user/downloads/jetty-distribution-9.4.8.tar.gz -C /opt/jetty/

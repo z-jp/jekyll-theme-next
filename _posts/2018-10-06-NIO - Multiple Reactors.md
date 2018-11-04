@@ -152,7 +152,7 @@ public class BasicReactor extends Reactor {
     }
 }
 ```
-单线程 Reactor 最大的问题是所有 Channel 都注册在一个 Selector，所有事件都在一个 select 循环中处理。一旦某个事件处理过慢就会影响其他事件。而 Selector 不能线程共享，因此只能考虑使用多个 Selector，服务器端 Channel 只处理 accept 事件，将创建的客户端 Channel 注册到不同 Selector 中。
+单线程 Reactor 最大的问题是所有 Channel 都注册在一个 Selector，所有事件都在一个 select 循环中处理，一旦某个事件处理过慢就会影响其他事件。而 在多个线程中执行 select 操作不能分摊事件处理，并没有意义。因此考虑使用多个 Selector，主 Selector 只处理服务器端 Channel 的 accept 事件，将创建的客户端 Channel 注册到其他 Selector 中。
 ### 多线程模型
 ```java
 public class MultiReactor extends BasicReactor {

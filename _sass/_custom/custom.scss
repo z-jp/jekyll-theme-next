@@ -20,3 +20,17 @@ pre, .highlight {
 ol, ul {
     -webkit-padding-start: 15px;
 }
+
+.icp-license,
+.powered-by,
+.theme-info { display: inline-block; }
+
+.theme-info,
+.powered-by {
+  margin-right: 10px;
+
+  &::after {
+    content: "|";
+    padding-left: 10px;
+  }
+}
